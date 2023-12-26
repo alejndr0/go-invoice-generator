@@ -100,7 +100,7 @@ func (hf *HeaderFooter) applyFooter(doc *Document) error {
 				doc.pdf.CellFormat(
 					10,
 					5,
-					doc.encodeString(fmt.Sprintf("Page %d/{nb}", doc.pdf.PageNo())),
+					doc.encodeString(fmt.Sprintf("%d/{nb}", doc.pdf.PageNo())),
 					"0",
 					0,
 					"R",
