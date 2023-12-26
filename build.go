@@ -461,9 +461,9 @@ func (doc *Document) appendTotal() {
 func (doc *Document) appendPaymentTerm() {
 	if len(doc.PaymentTerm) > 0 {
 		paymentTermString := fmt.Sprintf(
-			"%s: %s",
-			doc.encodeString(doc.Options.TextPaymentTermTitle),
-			doc.encodeString(doc.PaymentTerm),
+			"%s%s",
+			doc.Options.TextPaymentTermTitle,
+			doc.PaymentTerm,
 		)
 		doc.pdf.SetY(doc.pdf.GetY() + 15)
 
