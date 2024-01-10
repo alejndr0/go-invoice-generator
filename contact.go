@@ -10,7 +10,8 @@ import (
 
 // Contact contact a company informations
 type Contact struct {
-	Name    string   `json:"name,omitempty" validate:"required,min=1,max=256"`
+	Name    string `json:"name,omitempty" validate:"required,min=1,max=256"`
+	NIF     string
 	Logo    []byte   `json:"logo,omitempty"` // Logo byte array
 	Address *Address `json:"address,omitempty"`
 
@@ -71,7 +72,7 @@ func (c *Contact) appendContactTODoc(
 
 	// Set name
 	doc.pdf.SetFont(doc.Options.BoldFont, "B", 10)
-	doc.pdf.Cell(40, 8, doc.encodeString(c.Name))
+	doc.pdf.MultiCell(70, 8, doc.encodeString(c.Name)+"\n"+doc.encodeString(c.NIF), "0", "L", true)
 	doc.pdf.SetFont(doc.Options.Font, "", 10)
 
 	if c.Address != nil {
@@ -91,7 +92,7 @@ func (c *Contact) appendContactTODoc(
 		// Set address
 		doc.pdf.SetFont(doc.Options.Font, "", 10)
 		doc.pdf.SetXY(x, doc.pdf.GetY()+10)
-		doc.pdf.MultiCell(70, 5, doc.encodeString(c.Address.ToString()), "0", "L", false)
+		doc.pdf.MultiCell(70, 5, doc.encodeString(c.Address.ToString()), "0", "L", true)
 	}
 
 	// Addtionnal info
