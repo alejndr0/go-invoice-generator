@@ -72,7 +72,7 @@ func (c *Contact) appendContactTODoc(
 
 	// Set name
 	doc.pdf.SetFont(doc.Options.BoldFont, "B", 10)
-	doc.pdf.MultiCell(70, 8, doc.encodeString(c.Name)+"\n"+doc.encodeString(c.NIF), "0", "L", true)
+	doc.pdf.MultiCell(70, 5, doc.encodeString(c.Name)+"\n"+doc.encodeString(c.NIF), "0", "L", true)
 	doc.pdf.SetFont(doc.Options.Font, "", 10)
 
 	if c.Address != nil {
